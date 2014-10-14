@@ -1,0 +1,64 @@
+div {
+    width: 550px;
+    height: 250px;
+    background: url(../img/sheep.png) bottom right no-repeat, url(../img/betweengrassandsky.png);
+    /*
+    transition: ease 2s;
+    */
+}
+
+div:hover {
+    /*
+        background-position: bottom left, bottom left;
+    */
+    -webkit-animation: anim1 4s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation: anim1 4s;
+    -moz-animation-iteration-count: infinite;
+    animation: anim1 4s;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes anim1 {
+    0% {
+        background-position: bottom right, bottom right;
+        opacity: 0;
+    }
+
+    25% {
+        background-position: bottom left, bottom right;
+        opacity: 0.25;
+    }
+
+    50% {
+        background-position: top left, bottom right;
+        opacity: 0.5;
+    }
+
+    75% {
+        background-position: top right, bottom right;
+        opacity: 0.75;
+    }
+}
+
+@-moz-keyframes anim1 {
+    0% {
+        background-position: bottom right, bottom right;
+        opacity: 0;
+    }
+
+    25% {
+        background-position: bottom left, bottom right;
+        opacity: 0.25;
+    }
+
+    50% {
+        background-position: top left, bottom right;
+        opacity: 0.5;
+    }
+
+    75% {
+        background-position: top right, bottom right;
+        opacity: 0.75;
+    }
+}
