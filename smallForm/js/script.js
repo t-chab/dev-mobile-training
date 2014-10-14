@@ -1,10 +1,12 @@
+'use strict';
+
 String.prototype.isEmpty = function () {
     return (this.length === 0 || !this.trim());
 };
 
 var labels = document.getElementsByTagName('label');
-for (var i = 0; i < labels.length; i++) {
-    if (labels[i].htmlFor != '') {
+for (var i = 0; i < labels.length; i = i + 1) {
+    if (labels[i].htmlFor !== '') {
         var elem = document.getElementById(labels[i].htmlFor);
         if (elem) {
             elem.label = labels[i];
@@ -17,7 +19,7 @@ btn.addEventListener('click', validate);
 
 function validate() {
     var lInputs = document.querySelectorAll("input[type=text]");
-    for (var i = 0; i < lInputs.length; i++) {
+    for (var i = 0; i < lInputs.length; i = i + 1) {
         check(lInputs[i], ' error');
     }
 }
