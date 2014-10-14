@@ -1,0 +1,5 @@
+div {
+    width: 550px;
+    height: 250px;
+    background: url(../img/sheep.png) bottom right no-repeat, url(../img/betweengrassandsky.png);
+}
