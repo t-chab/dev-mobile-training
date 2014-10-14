@@ -4,16 +4,13 @@ $(document).ready(
         'use strict';
         var lCanvas,
             lCtx,
-            i,
             x,
             y,
-            canvas,
             shift,
             width,
             height;
         lCanvas = document.getElementById('drawHere');
         lCtx = lCanvas.getContext('2d');
-        i = 0;
         x = 0;
         y = 0;
         shift = 10;
@@ -33,7 +30,7 @@ $(document).ready(
             }
             lCtx.strokeStyle = '#00ff00';
             lCtx.stroke();
-            lCtx.closePath()
+            lCtx.closePath();
 
             lCtx.beginPath();
             for (y = 0; y < height; y = y + shift) {
