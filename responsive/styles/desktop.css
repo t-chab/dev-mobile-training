@@ -1,0 +1,45 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: black;
+    font-family: Roboto;
+    color: white;
+}
+
+ul {
+    list-style: none;
+    margin-left: 15px;
+}
+
+li {
+    text-align: center;
+    display: inline-block;
+    border: solid orange;
+    margin-top: 5px;
+    margin-right: 5px;
+    padding: 3px;
+    width: 200px;
+    font-weight: bold;
+    float: left;
+}
+
+li:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+li:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+li:hover {
+    background: white;
+    color: black;
+    cursor: pointer;
+}
