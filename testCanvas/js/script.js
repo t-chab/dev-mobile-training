@@ -4,6 +4,7 @@ $(document).ready(
         'use strict';
         var lCanvas,
             lCtx,
+            i,
             x,
             y,
             shift,
