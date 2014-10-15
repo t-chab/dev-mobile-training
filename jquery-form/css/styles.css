@@ -1,0 +1,15 @@
+.error {
+    border: solid #ff0000;
+}
+
+.good {
+    border: solid #00ff00;
+}
+
+form {
+    width: 300px;
+}
+
+input {
+    display: block;
+}
