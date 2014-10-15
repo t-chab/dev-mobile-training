@@ -3,7 +3,8 @@
     $(document).ready(main);
     var
         isValid = true,
-        key = 'idx';
+        key = 'idx',
+        contactId = 'data-contactId';
 
     function main() {
         $('#send').on('click', check);
@@ -11,9 +12,10 @@
     }
 
     function check(e) {
-        var formId = '#firstForm',
-            inputSelector = formId + ' input',
-            idx = 0;
+        var
+            idx = 0,
+            formId = '#firstForm',
+            inputSelector = formId + ' input';
 
         e.preventDefault();
         $(inputSelector).each(function (idx, elt) {
@@ -43,11 +45,12 @@
         }
     }
 
+    // Display local storage items into list
     function displayLocalStorage(e) {
         // Reading localStorage
         var nbItems = localStorage.getItem(key),
             frag = document.createDocumentFragment(),
-            li, lPersonIdx, person, item;
+            li, lPersonIdx, person, item, button;
 
         e.preventDefault();
 
@@ -56,12 +59,44 @@
             lPersonIdx = 'contact' + i;
             person = JSON.parse(localStorage.getItem(lPersonIdx));
             item = document.createTextNode(person.firstName + ' ' + person.lastName);
+            button = document.createElement('button');
+            $(button).html('Edit');
+            $(button).attr(contactId, lPersonIdx);
+            $(button).on('click', preloadItem);
             li.appendChild(item);
-            frag.appendChild(li);
+            frag.appendChild(li).appendChild(button);
         }
         document.getElementById('list').appendChild(frag);
     }
 
+    // Load a clicked item list into form
+    function preloadItem(e) {
+        e.preventDefault();
+
+        // Fetch localStorage item
+        var clickedElt = e.target,
+            lId = clickedElt.getAttribute(contactId),
+            person = JSON.parse(localStorage.getItem(lId)),
+            propsList = listProperties(person);
+        $.each(propsList, function (id, val) {
+            console.log('id=' + id + ' value=' + val + ' person[' + val + ']=' + person[val]);
+            $('#' + val).val(person[val]);
+        });
+    }
+
+    // Deserialize
+    function listProperties(obj) {
+        var propList = [];
+        for (var propName in obj) {
+            if (obj.hasOwnProperty(propName)) {
+                // if (typeof(obj[propName]) !== 'undefined') {
+                propList.push(propName);
+            }
+        }
+        return propList;
+    }
+
+    // Serialize
     $.fn.serializeObject = function () {
         var o = {}, a = this.serializeArray();
         $.each(a, function () {
