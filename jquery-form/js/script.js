@@ -12,9 +12,7 @@
     }
 
     function check(e) {
-        var
-            idx = 0,
-            formId = '#firstForm',
+        var formId = '#firstForm',
             inputSelector = formId + ' input';
 
         e.preventDefault();
@@ -30,18 +28,35 @@
         });
 
         if (isValid) {
-
-            if (localStorage.getItem(key) !== null) {
-                idx = localStorage.getItem(key);
-                idx++;
-                //idx= parseInt(idx)+1;
-                localStorage.setItem(key, idx);
+            var person = $(formId).serializeObject();
+            if (localStorage.getItem('userToEdit') === null) {
+                if (localStorage.getItem(key) !== null) {
+                    var lIndex = localStorage.getItem(key);
+                    lIndex++;
+                    localStorage.setItem(key, lIndex);
+                } else {
+                    localStorage.setItem(key, 0);
+                }
+                localStorage.setItem('contact' + localStorage.getItem(key), JSON.stringify($('#firstForm').serializeObject()));
+            } else {
+                localStorage.setItem(localStorage.getItem('userToEdit'), JSON.stringify(person));
+                localStorage.removeItem('userToEdit');
             }
-            else {
-                localStorage.setItem(key, 0);
-            }
 
-            localStorage.setItem('contact' + localStorage.getItem(key), JSON.stringify($('#firstForm').serializeObject()));
+
+            /*
+             if (localStorage.getItem(key) !== null) {
+             idx = localStorage.getItem(key);
+             idx++;
+             //idx= parseInt(idx)+1;
+             localStorage.setItem(key, idx);
+             }
+             else {
+             localStorage.setItem(key, 0);
+             }
+
+             localStorage.setItem('contact' + localStorage.getItem(key), JSON.stringify($('#firstForm').serializeObject()));
+             */
         }
     }
 
