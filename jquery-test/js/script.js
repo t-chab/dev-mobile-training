@@ -18,24 +18,15 @@
         }));
 
         btn1.on('click', function () {
-            toggle('#btn1', '#btn2');
+            toggle($('#btn1'), $('#btn2'));
         });
         btn2.on('click', function () {
-            toggle('#btn2', '#btn1');
+            toggle($('#btn2'), $('#btn1'));
         });
 
         function toggle(pEnable, pDisable) {
-            var lEnabled = $(pEnable),
-                lDisabled = $(pDisable);
-            /*
-             lEnabled.toggleClass('green');
-             lEnabled.removeClass('red');
-             lDisabled.toggleClass('red');
-             lDisabled.removeClass('green');
-             */
-            lEnabled.addClass('green').removeClass('red');
-            lDisabled.addClass('red').removeClass('green');
-
+            pEnable.addClass('green').removeClass('red');
+            pDisable.addClass('red').removeClass('green');
         }
     }
 }());
