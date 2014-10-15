@@ -18,10 +18,10 @@
         }));
 
         btn1.on('click', function () {
-            toggle($('#btn1'), $('#btn2'));
+            toggle(btn1, btn2);
         });
         btn2.on('click', function () {
-            toggle($('#btn2'), $('#btn1'));
+            toggle(btn2, btn1);
         });
 
         function toggle(pEnable, pDisable) {
