@@ -13,3 +13,7 @@ form {
 input {
     display: block;
 }
+
+li {
+    list-style: none;
+}
