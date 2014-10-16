@@ -2,18 +2,18 @@
     'use strict';
 
     var
-        key = 'idx';
+        key = 'idx',
+        contactId = 'data-contactId';
 
     $(document).on('pagechange', function () {
         if ($.mobile.activePage.attr('id') === 'addContact') {
             $('#btnSave').on('click', saveContact);
-        } else if ($.mobile.activePage.attr('id') === 'listContact') {
-            //initListContact();
-            console.log('Not implemented');
+        } else if ($.mobile.activePage.attr('id') === 'contactList') {
+            initListContact();
         }
     });
 
-    function saveContact(e) {
+    function saveContact() {
         var formId = '#addContactForm',
             inputSelector = formId + ' input',
             isValid = true,
@@ -21,7 +21,6 @@
             person = $(formId).serializeObject(),
             lUserToEdit = localStorage.getItem(userToEditLocalStorageId);
 
-        e.preventDefault();
         $(inputSelector).each(function (idx, elt) {
             var lElt = $(elt);
             lElt.removeClass('good').removeClass('error');
@@ -48,6 +47,53 @@
                 localStorage.removeItem(userToEditLocalStorageId);
             }
         }
+    }
+
+    function initListContact() {
+        // Reading localStorage
+        var nbItems = localStorage.getItem(key),
+            frag = document.createDocumentFragment(),
+            li, lPersonIdx, person, item;
+
+        for (var i = 0; i <= parseInt(nbItems); i++) {
+            li = document.createElement('li');
+            lPersonIdx = 'contact' + i;
+            person = JSON.parse(localStorage.getItem(lPersonIdx));
+            item = document.createTextNode(person.firstName + ' ' + person.lastName);
+            $(li).attr(contactId, lPersonIdx);
+            $(li).on('click', preloadItem);
+            li.appendChild(item);
+            frag.appendChild(li);
+        }
+        document.getElementById('listContact').appendChild(frag);
+        $('#listContact').listview('refresh');
+    }
+
+    // Load a clicked item list into form
+    function preloadItem(e) {
+        e.preventDefault();
+
+        // Fetch localStorage item
+        var clickedElt = e.target,
+            lId = clickedElt.getAttribute(contactId),
+            person = JSON.parse(localStorage.getItem(lId)),
+            propsList = listProperties(person);
+        $.each(propsList, function (id, val) {
+            console.log('id=' + id + ' value=' + val + ' person[' + val + ']=' + person[val]);
+            $('#' + val).val(person[val]);
+        });
+        localStorage.setItem('userToEdit', lId);
+    }
+
+    // Deserialize
+    function listProperties(obj) {
+        var propList = [];
+        for (var propName in obj) {
+            if (obj.hasOwnProperty(propName)) {
+                propList.push(propName);
+            }
+        }
+        return propList;
     }
 
     // Serialize
