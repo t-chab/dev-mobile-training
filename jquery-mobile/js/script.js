@@ -54,10 +54,7 @@
                 $(jId).val(person[val]);
                 console.log('breakpoint');
 
-                /*if ($(jId)[0].className.indexOf('ui-slider-handle')) {
-                 //$(jId).slider('refresh');
-                 }*/
-
+                $('#age').slider('refresh');
             });
         }
     }
