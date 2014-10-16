@@ -3,21 +3,34 @@
 
     var
         key = 'idx',
-        contactId = 'data-contactId';
+        contactId = 'data-contactId',
+        userToEditLocalStorageId = 'userToEdit';
 
     $(document).on('pagechange', function () {
         if ($.mobile.activePage.attr('id') === 'addContact') {
             $('#btnSave').on('click', saveContact);
+            preLoadUser();
         } else if ($.mobile.activePage.attr('id') === 'contactList') {
             initListContact();
         }
     });
 
+    function preLoadUser() {
+        var lUserToEdit = localStorage.getItem(userToEditLocalStorageId), person, propsList;
+        if (lUserToEdit !== null) {
+            person = JSON.parse(localStorage.getItem(lUserToEdit));
+            propsList = listProperties(person);
+            $.each(propsList, function (id, val) {
+                console.log('id=' + id + ' value=' + val + ' person[' + val + ']=' + person[val]);
+                $('#' + val).val(person[val]);
+            });
+        }
+    }
+
     function saveContact() {
         var formId = '#addContactForm',
             inputSelector = formId + ' input',
             isValid = true,
-            userToEditLocalStorageId = 'userToEdit',
             person = $(formId).serializeObject(),
             lUserToEdit = localStorage.getItem(userToEditLocalStorageId);
 
@@ -61,7 +74,7 @@
             person = JSON.parse(localStorage.getItem(lPersonIdx));
             item = document.createTextNode(person.firstName + ' ' + person.lastName);
             $(li).attr(contactId, lPersonIdx);
-            $(li).on('click', preloadItem);
+            $(li).on('click', editItem);
             li.appendChild(item);
             frag.appendChild(li);
         }
@@ -70,19 +83,14 @@
     }
 
     // Load a clicked item list into form
-    function preloadItem(e) {
+    function editItem(e) {
         e.preventDefault();
 
         // Fetch localStorage item
         var clickedElt = e.target,
-            lId = clickedElt.getAttribute(contactId),
-            person = JSON.parse(localStorage.getItem(lId)),
-            propsList = listProperties(person);
-        $.each(propsList, function (id, val) {
-            console.log('id=' + id + ' value=' + val + ' person[' + val + ']=' + person[val]);
-            $('#' + val).val(person[val]);
-        });
+            lId = clickedElt.getAttribute(contactId);
         localStorage.setItem('userToEdit', lId);
+        $.mobile.changePage('addContact.html');
     }
 
     // Deserialize
