@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head lang="fr">
+        <meta charset="UTF-8">
+        <title>jQuery Mobile test</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css"/>
+        <link rel="stylesheet" href="css/styles.css"/>
+    </head>
+    <body>
+        <div data-role="page" id="home" data-title="Home" data-theme="z">
+            <div data-role="header">
+                <h1>Page title</h1>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview">
+                    <li><a href="addContact.html">Add contact.</a></li>
+                    <li><a href="#">List contact.</a></li>
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a data-icon="home" href="index.html">Home</a></li>
+                        <li><a data-icon="plus" href="addContact.html">Add contact.</a></li>
+                        <li><a data-icon="grid" href="#">List contact.</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/script.js"></script>
+        <script src="js/jquery.mobile-1.4.4.min.js"></script>
+    </body>
+</html>
