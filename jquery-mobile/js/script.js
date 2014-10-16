@@ -41,7 +41,7 @@
                 } else {
                     localStorage.setItem(key, 0);
                 }
-                localStorage.setItem('contact' + localStorage.getItem(key), JSON.stringify($('#firstForm').serializeObject()));
+                localStorage.setItem('contact' + localStorage.getItem(key), JSON.stringify($(formId).serializeObject()));
             } else {
                 localStorage.setItem(localStorage.getItem('userToEdit'), JSON.stringify(person));
                 localStorage.removeItem('userToEdit');
