@@ -16,6 +16,12 @@
                 <a data-role="button" data-icon="check" id="btnSave">Save</a>
             </div>
             <div data-role="content">
+                <div data-role="popup" id="errorForm" class="ui-content">
+                    <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext"
+                       class="ui-btn-right"></a>
+
+                    <p>You need to fill all fields !</p>
+                </div>
                 <form data-role="fieldcontain" name="addContactForm" id="addContactForm">
                     <h1>Add contact form</h1>
 
@@ -47,6 +53,8 @@
                         <li><a data-icon="home" href="index.html">Home</a></li>
                         <li><a data-icon="plus" href="addContact.html">Add contact.</a></li>
                         <li><a data-icon="grid" href="listContact.html">List contact.</a></li>
+                        <li><a href="newsLetter.html" data-rel="dialog" data-transition="pop"
+                               data-icon="gear">Subscribe</a></li>
                     </ul>
                 </div>
             </div>
