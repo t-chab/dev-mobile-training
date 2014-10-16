@@ -29,7 +29,8 @@
 
         if (isValid) {
             var person = $(formId).serializeObject();
-            if (localStorage.getItem('userToEdit') === null) {
+            var lUserToEdit = localStorage.getItem('userToEdit');
+            if (lUserToEdit === null) {
                 if (localStorage.getItem(key) !== null) {
                     var lIndex = localStorage.getItem(key);
                     lIndex++;
@@ -42,21 +43,6 @@
                 localStorage.setItem(localStorage.getItem('userToEdit'), JSON.stringify(person));
                 localStorage.removeItem('userToEdit');
             }
-
-
-            /*
-             if (localStorage.getItem(key) !== null) {
-             idx = localStorage.getItem(key);
-             idx++;
-             //idx= parseInt(idx)+1;
-             localStorage.setItem(key, idx);
-             }
-             else {
-             localStorage.setItem(key, 0);
-             }
-
-             localStorage.setItem('contact' + localStorage.getItem(key), JSON.stringify($('#firstForm').serializeObject()));
-             */
         }
     }
 
@@ -97,6 +83,7 @@
             console.log('id=' + id + ' value=' + val + ' person[' + val + ']=' + person[val]);
             $('#' + val).val(person[val]);
         });
+        localStorage.setItem('userToEdit', lId);
     }
 
     // Deserialize
