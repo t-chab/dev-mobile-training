@@ -1,8 +1,8 @@
 
 .error {
-    border: solid #ff0000;
+    border: solid #ff0000 !important;
 }
 
 .good {
-    border: solid #00ff00;
+    border: solid #00ff00 !important;
 }
