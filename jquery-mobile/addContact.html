@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head lang="fr">
+        <meta charset="UTF-8">
+        <title>Add contact</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css"/>
+        <link rel="stylesheet" href="css/styles.css"/>
+    </head>
+    <body>
+        <div data-role="page" id="addContact" data-title="Add contact" data-theme="b">
+            <div data-role="header">
+                <a data-rel="back" data-role="button" data-icon="arrow-1">Back</a>
+
+                <h1>Add a contact</h1>
+                <a data-role="button" data-icon="check" id="btnSave">Save</a>
+            </div>
+            <div data-role="content">
+                <form data-role="fieldcontain" name="addContactForm" id="addContactForm">
+                    <h1>Add contact form</h1>
+
+                    <div data-role="fieldcontain">
+                        <label for="lastName">Last name</label>
+                        <input type="text" name="lastName" id="lastName"/>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="firstName">First name</label>
+                        <input type="text" name="firstName" id="firstName"/>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="address">Address</label>
+                        <input type="text" name="address" id="address"/>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="tel">Telephone number</label>
+                        <input type="tel" name="tel" id="tel"/>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="age">Telephone number</label>
+                        <input type="range" name="age" id="age" value="0" min="0" max="125"/>
+                    </div>
+                </form>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a data-icon="home" href="index.html">Home</a></li>
+                        <li><a data-icon="plus" href="addContact.html">Add contact.</a></li>
+                        <li><a data-icon="grid" href="#">List contact.</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/script.js"></script>
+        <script src="js/jquery.mobile-1.4.4.min.js"></script>
+    </body>
+</html>
