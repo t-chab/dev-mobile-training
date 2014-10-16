@@ -16,7 +16,10 @@
     function saveContact(e) {
         var formId = '#addContactForm',
             inputSelector = formId + ' input',
-            isValid = true;
+            isValid = true,
+            userToEditLocalStorageId = 'userToEdit',
+            person = $(formId).serializeObject(),
+            lUserToEdit = localStorage.getItem(userToEditLocalStorageId);
 
         e.preventDefault();
         $(inputSelector).each(function (idx, elt) {
@@ -31,8 +34,6 @@
         });
 
         if (isValid) {
-            var person = $(formId).serializeObject();
-            var lUserToEdit = localStorage.getItem('userToEdit');
             if (lUserToEdit === null) {
                 if (localStorage.getItem(key) !== null) {
                     var lIndex = localStorage.getItem(key);
@@ -43,8 +44,8 @@
                 }
                 localStorage.setItem('contact' + localStorage.getItem(key), JSON.stringify($(formId).serializeObject()));
             } else {
-                localStorage.setItem(localStorage.getItem('userToEdit'), JSON.stringify(person));
-                localStorage.removeItem('userToEdit');
+                localStorage.setItem(localStorage.getItem(userToEditLocalStorageId), JSON.stringify(person));
+                localStorage.removeItem(userToEditLocalStorageId);
             }
         }
     }
