@@ -66,7 +66,10 @@
         // Reading localStorage
         var nbItems = localStorage.getItem(key),
             frag = document.createDocumentFragment(),
-            li, lPersonIdx, person, item;
+            li, lPersonIdx, person, item, contacts;
+
+        contacts = $('#listContact');
+        contacts.empty();
 
         for (var i = 0; i <= parseInt(nbItems); i++) {
             li = document.createElement('li');
@@ -79,7 +82,7 @@
             frag.appendChild(li);
         }
         document.getElementById('listContact').appendChild(frag);
-        $('#listContact').listview('refresh');
+        contacts.listview('refresh');
     }
 
     // Load a clicked item list into form
