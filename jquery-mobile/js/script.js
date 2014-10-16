@@ -6,23 +6,56 @@
         contactId = 'data-contactId',
         userToEditLocalStorageId = 'userToEdit';
 
-    $(document).on('pagechange', function () {
-        if ($.mobile.activePage.attr('id') === 'addContact') {
-            $('#btnSave').on('click', saveContact);
-            preLoadUser();
-        } else if ($.mobile.activePage.attr('id') === 'contactList') {
-            initListContact();
-        }
+    $(document).ready(function () {
+
+        $(document).on('pagechange', function () {
+            if ($.mobile.activePage.attr('id') === 'addContact') {
+                $('#btnSave').on('click', saveContact);
+                preLoadUser();
+            } else if ($.mobile.activePage.attr('id') === 'contactList') {
+                initListContact();
+            }
+        });
+
+        $(document).swipeleft(function (e) {
+            console.log(e);
+            if ($(e.target.classList)[0] !== 'ui-slider-handle') {
+                if ($.mobile.activePage.attr('id') === 'home') {
+                    $.mobile.changePage('listContact.html', { transition: 'slide'});
+                } else if ($.mobile.activePage.attr('id') === 'listContact') {
+                    $.mobile.changePage('addContact.html', { transition: 'slide'});
+                }
+            }
+        });
+
+        $(document).swiperight(function (e) {
+            console.log(e);
+            if ($(e.target.classList[0]) !== 'ui-slider-handle') {
+                if ($.mobile.activePage.attr('id') === 'home') {
+                    $.mobile.changePage('addContact.html', { transition: 'slide', reverse: true});
+                } else if ($.mobile.activePage.attr('id') === 'listContact') {
+                    $.mobile.changePage('listContact.html', { transition: 'slide', reverse: true });
+                }
+            }
+        });
     });
 
     function preLoadUser() {
-        var lUserToEdit = localStorage.getItem(userToEditLocalStorageId), person, propsList;
+        var lUserToEdit = localStorage.getItem(userToEditLocalStorageId),
+            person,
+            propsList,
+            jId;
         if (lUserToEdit !== null) {
             person = JSON.parse(localStorage.getItem(lUserToEdit));
             propsList = listProperties(person);
             $.each(propsList, function (id, val) {
                 console.log('id=' + id + ' value=' + val + ' person[' + val + ']=' + person[val]);
-                $('#' + val).val(person[val]);
+                jId = '#' + val;
+                $(jId).val(person[val]);
+                console.log('breakpoint');
+                if ($(jId).classList[0] === 'ui-slider-handle') {
+                    $(jId).slider().slider('refresh');
+                }
             });
         }
     }
@@ -42,6 +75,7 @@
             } else {
                 isValid = false;
                 lElt.addClass('error');
+                $('#errorForm').popup('open');
             }
         });
 
@@ -59,6 +93,7 @@
                 localStorage.setItem(localStorage.getItem(userToEditLocalStorageId), JSON.stringify(person));
                 localStorage.removeItem(userToEditLocalStorageId);
             }
+            $(formId)[0].reset();
         }
     }
 
