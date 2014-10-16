@@ -2,7 +2,6 @@
     'use strict';
     $(document).ready(main);
     var
-        isValid = true,
         key = 'idx',
         contactId = 'data-contactId';
 
@@ -13,7 +12,8 @@
 
     function check(e) {
         var formId = '#firstForm',
-            inputSelector = formId + ' input';
+            inputSelector = formId + ' input',
+            isValid = true;
 
         e.preventDefault();
         $(inputSelector).each(function (idx, elt) {
