@@ -53,9 +53,11 @@
                 jId = '#' + val;
                 $(jId).val(person[val]);
                 console.log('breakpoint');
-                if ($(jId).classList[0] === 'ui-slider-handle') {
-                    $(jId).slider().slider('refresh');
-                }
+
+                /*if ($(jId)[0].className.indexOf('ui-slider-handle')) {
+                 //$(jId).slider('refresh');
+                 }*/
+
             });
         }
     }
