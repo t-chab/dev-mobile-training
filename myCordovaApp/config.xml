@@ -1,12 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.cordova.hellocordova" version="0.0.1" xmlns="http://www.w3.org/ns/widgets">
-    <name>HelloCordova</name>
+    <name>myCordovaApp</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        A sample cordova app
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="tchabaud@laposte.net"
+            href="https://github.com/tchabaud/dev-mobile-training/tree/master/myCordovaApp">
+        Thomas Chabaud
     </author>
     <content src="index.html"/>
     <access origin="*"/>
+    <preference name="Fullscreen" value="true"/>
+    <preference name="LogLevel" value="INFO"/>
 </widget>
