@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head lang="fr">
-        <meta charset="UTF-8">
-        <title>Contact list</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="css/jquery.mobile-1.4.4.min.css"/>
-        <link rel="stylesheet" href="css/styles.css"/>
+    <head>
+        <title>Add Photo</title>
     </head>
     <body>
-        <div data-role="page" id="contactList" data-title="List">
+        <div data-role="page" id="addPhoto" data-title="Photo">
             <div data-role="header">
-                <h1>Contact list</h1>
+                <h1>Add a photo</h1>
             </div>
             <div data-role="content">
-                <ul id="listContact" data-role="listview">
-                </ul>
+                <button id="capturePhoto">Capture Photo</button>
+                <br/>
+                <button id="capturePhotoEdit">Capture Editable Photo</button>
+                <br/>
+                <button id="importFromLibrary">From Photo Library</button>
+                <br/>
+                <button id="importFromAlbum">From Photo Album</button>
+                <br/>
+                <img style="display:none;width:60px;height:60px;" id="smallImage" src=""/>
+                <img style="display:none;" id="largeImage" src=""/>
             </div>
             <div data-role="footer" data-position="fixed">
                 <div data-role="navbar" data-iconpos="top">
