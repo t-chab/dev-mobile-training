@@ -14,9 +14,23 @@
                 preLoadUser();
             } else if ($.mobile.activePage.attr('id') === 'contactList') {
                 initListContact();
+            } else if ($.mobile.activePage.attr('id') === 'addPhoto') {
+                // Photo functions binding on buttons
+                $('#capturePhoto').on('click', capturePhoto);
+                $('#capturePhotoEdit').on('click', capturePhotoEdit);
+                /*
+                 $('#importFromLibrary').on('click', getPhoto(pictureSource.PHOTOLIBRARY));
+                 $('#importFromAlbum').on('click', function(){
+                 getPhoto(pictureSource.PHOTOLIBRARY);
+                 });
+
+                 <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button>
+                 <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button>
+                 */
             }
         });
 
+        // Swipe binding
         $(document).swipeleft(function (e) {
             console.log(e);
             if ($(e.target.classList)[0] !== 'ui-slider-handle') {
