@@ -7,7 +7,7 @@ cordova plugin add org.apache.cordova.camera
 cordova build
 cordova run android
 
-# Xwalk install
+# Xwalk install (WARNING : Crosswalk needs cordova 3.5 and actually DOES NOT WORK with 3.6
 # wget https://download.01.org/crosswalk/releases/crosswalk/android/stable/8.37.189.12/arm/crosswalk-cordova-8.37.189.12-arm.zip
 # rm -Rf myCordovaApp/platforms/android/CordovaLib/*
 # copy xwalk_home/framework/* to myCordovaApp/platforms/android/CordovaLib/
