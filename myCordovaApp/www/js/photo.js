@@ -32,6 +32,9 @@ function onPhotoDataSuccess(imageData) {
     // The inline CSS rules are used to resize the image
     //
     smallImage.src = "data:image/jpeg;base64," + imageData;
+
+    var largeImage = document.getElementById('largeImage');
+    largeImage.src = "data:image/jpeg;base64," + imageData;
 }
 
 // Called when a photo is successfully retrieved

@@ -18,6 +18,9 @@
                 // Photo functions binding on buttons
                 $('#capturePhoto').on('click', capturePhoto);
                 $('#capturePhotoEdit').on('click', capturePhotoEdit);
+                $('#smallImage').on('click', function () {
+                    $('#largeImage').addClass('overlay');
+                });
                 /*
                  $('#importFromLibrary').on('click', getPhoto(pictureSource.PHOTOLIBRARY));
                  $('#importFromAlbum').on('click', function(){
